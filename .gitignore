@@ -1,0 +1,19 @@
+# Windows
+Thumbs.db
+
+# Output
+bin/
+obj/
+
+
+# IDE
+.vscode/
+.vs/
+
+# NuGet
+packages/
+*.nupkg
+!.nuget/NuGet.exe
+
+# misc
+*.stackdump
