@@ -1,0 +1,11 @@
+/home/rowan/git/anagramo/bin/Debug/netcoreapp3.0/anagramo
+/home/rowan/git/anagramo/bin/Debug/netcoreapp3.0/anagramo.deps.json
+/home/rowan/git/anagramo/bin/Debug/netcoreapp3.0/anagramo.runtimeconfig.json
+/home/rowan/git/anagramo/bin/Debug/netcoreapp3.0/anagramo.runtimeconfig.dev.json
+/home/rowan/git/anagramo/bin/Debug/netcoreapp3.0/anagramo.dll
+/home/rowan/git/anagramo/bin/Debug/netcoreapp3.0/anagramo.pdb
+/home/rowan/git/anagramo/obj/Debug/netcoreapp3.0/anagramo.csprojAssemblyReference.cache
+/home/rowan/git/anagramo/obj/Debug/netcoreapp3.0/anagramo.AssemblyInfoInputs.cache
+/home/rowan/git/anagramo/obj/Debug/netcoreapp3.0/anagramo.AssemblyInfo.cs
+/home/rowan/git/anagramo/obj/Debug/netcoreapp3.0/anagramo.dll
+/home/rowan/git/anagramo/obj/Debug/netcoreapp3.0/anagramo.pdb
