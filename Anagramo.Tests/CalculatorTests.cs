@@ -8,7 +8,7 @@ namespace Anagramo.Tests
         public void TestFactorialZero()
         {
             int a = 0;
-            int b = 0;
+            int b = 1;
 
             Assert.That(Util.GenerateFactorial(a), Is.EqualTo(b));
             
