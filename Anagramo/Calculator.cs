@@ -1,13 +1,7 @@
 namespace Anagramo
 {
-    internal static class Calculator
+    internal static class Util
     {
-        public static int Add(int a, int b)
-        {
-            return a + b;
-        }
-
-
         public static int GenerateFactorial(int a)
         {
             if (0 < a && a < 50)
@@ -25,7 +19,6 @@ namespace Anagramo
                 return 0;
             }
         }
-
     }
 
 

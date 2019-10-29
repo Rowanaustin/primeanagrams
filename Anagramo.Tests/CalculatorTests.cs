@@ -2,26 +2,15 @@
 
 namespace Anagramo.Tests
 {
-    public class CalculatorTests
-    {
-        [Test]
-        public void TestAdd()
-        {
-
-            int a = 5;
-            int b = 3;
-            int exp = 8;
-
-            Assert.That(Calculator.Add(a,b), Is.EqualTo(exp));
-        }
-        
+    public class UtilTests
+    {        
         [Test]
         public void TestFactorialZero()
         {
             int a = 0;
             int b = 0;
 
-            Assert.That(Calculator.GenerateFactorial(a), Is.EqualTo(b));
+            Assert.That(Util.GenerateFactorial(a), Is.EqualTo(b));
             
         }
         
@@ -31,7 +20,7 @@ namespace Anagramo.Tests
             int a = 1;
             int b = 1;
 
-            Assert.That(Calculator.GenerateFactorial(a), Is.EqualTo(b));
+            Assert.That(Util.GenerateFactorial(a), Is.EqualTo(b));
             
         }
 
@@ -41,7 +30,7 @@ namespace Anagramo.Tests
             int a = 2;
             int b = 2;
 
-            Assert.That(Calculator.GenerateFactorial(a), Is.EqualTo(b));
+            Assert.That(Util.GenerateFactorial(a), Is.EqualTo(b));
             
         }
 
@@ -51,7 +40,7 @@ namespace Anagramo.Tests
             int a = 3;
             int b = 6;
 
-            Assert.That(Calculator.GenerateFactorial(a), Is.EqualTo(b));
+            Assert.That(Util.GenerateFactorial(a), Is.EqualTo(b));
             
         }
 
@@ -61,7 +50,7 @@ namespace Anagramo.Tests
             int a = 4;
             int b = 24;
 
-            Assert.That(Calculator.GenerateFactorial(a), Is.EqualTo(b));
+            Assert.That(Util.GenerateFactorial(a), Is.EqualTo(b));
             
         }
 
@@ -71,7 +60,7 @@ namespace Anagramo.Tests
             int a = 5;
             int b = 120;
 
-            Assert.That(Calculator.GenerateFactorial(a), Is.EqualTo(b));
+            Assert.That(Util.GenerateFactorial(a), Is.EqualTo(b));
             
         }
 
@@ -81,7 +70,7 @@ namespace Anagramo.Tests
             int a = 50;
             int b = 0;
 
-            Assert.That(Calculator.GenerateFactorial(a), Is.EqualTo(b));
+            Assert.That(Util.GenerateFactorial(a), Is.EqualTo(b));
             
         }
     }
