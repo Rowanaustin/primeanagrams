@@ -10,8 +10,8 @@ namespace Anagramo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Anagramo");
-            Console.ReadKey();
+            Console.WriteLine("Enter a two letter word");
+            var  x = Console.Read();
         }
     }
 }

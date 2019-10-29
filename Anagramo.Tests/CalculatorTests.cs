@@ -11,7 +11,7 @@ namespace Anagramo.Tests
 
             int a = 5;
             int b = 3;
-            int exp = 7;
+            int exp = 8;
 
             Assert.That(calculator.Add(a,b), Is.EqualTo(exp));
         }
