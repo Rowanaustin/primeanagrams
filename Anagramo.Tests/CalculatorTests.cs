@@ -65,13 +65,21 @@ namespace Anagramo.Tests
         }
 
         [Test]
-        public void TestFactorialFiftyReturnsZero()
+        public void TestFactorialTwelve()
         {
-            int a = 50;
+            int a = 12;
+            int b = 479001600;
+
+            Assert.That(Util.GenerateFactorial(a), Is.EqualTo(b));
+        }
+
+        [Test]
+        public void TestFactorialThirteenReturnsZero()
+        {
+            int a = 13;
             int b = 0;
 
             Assert.That(Util.GenerateFactorial(a), Is.EqualTo(b));
-            
         }
     }
 }
