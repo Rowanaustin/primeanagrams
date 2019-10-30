@@ -90,7 +90,7 @@ namespace Anagramo.Tests
             int inta = 0;
             int intb = 1;
 
-            Assert.That(Util.swap(a,inta,intb), Is.EqualTo(b));
+            Assert.That(a.SwapChars(inta,intb), Is.EqualTo(b));
         }
 
         [Test]
@@ -101,7 +101,7 @@ namespace Anagramo.Tests
             int inta = 0;
             int intb = 10;
 
-            Assert.That(Util.swap(a,inta,intb), Is.EqualTo(b));
+            Assert.That(a.SwapChars(inta,intb), Is.EqualTo(b));
         }
     }
 }

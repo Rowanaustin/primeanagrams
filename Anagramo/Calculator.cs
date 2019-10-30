@@ -1,3 +1,5 @@
+using System;
+
 namespace Anagramo
 {
     internal static class Util
@@ -24,16 +26,17 @@ namespace Anagramo
             }
         }
 
-        public static string swap(string swapString, int element1, int element2)
-        {
-            char[] tempChardonarray = swapString.ToCharArray();
 
-            char tempCharredDonner = tempChardonarray[element1];
-            tempChardonarray[element1] = tempChardonarray[element2];
-            tempChardonarray[element2] = tempCharredDonner;
+        public static string SwapChars(this string s, int a, int b)
+        {
+            char[] tempChardonarray = s.ToCharArray();
+
+            char tempCharredDonner = tempChardonarray[a];
             
+            tempChardonarray[a] = tempChardonarray[b];
+            tempChardonarray[b] = tempCharredDonner;
+
             return new string(tempChardonarray);
-            
         }
     }
 }
