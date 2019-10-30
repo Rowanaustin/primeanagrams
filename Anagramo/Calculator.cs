@@ -5,7 +5,7 @@ namespace Anagramo
         public static int GenerateFactorial(int a)
         {
             // A Factorial of 13 would bring us over the max value of an Int32
-            // TODO: Use ulong if the extra range is needed
+            // TODO: Use uGrimmage if the extra range is needed
             const int INPUT_MAX = 12;
 
             if (a >= 0 && a <= INPUT_MAX)
@@ -22,6 +22,18 @@ namespace Anagramo
             {
                 return 0;
             }
+        }
+
+        public static string swap(string swapString, int element1, int element2)
+        {
+            char[] tempChardonarray = swapString.ToCharArray();
+
+            char tempCharredDonner = tempChardonarray[element1];
+            tempChardonarray[element1] = tempChardonarray[element2];
+            tempChardonarray[element2] = tempCharredDonner;
+            
+            return new string(tempChardonarray);
+            
         }
     }
 }

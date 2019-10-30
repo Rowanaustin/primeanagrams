@@ -81,5 +81,27 @@ namespace Anagramo.Tests
 
             Assert.That(Util.GenerateFactorial(a), Is.EqualTo(b));
         }
+
+        [Test]
+        public void TestStringSwap1()
+        {
+            string a = "ab";
+            string b = "ba";
+            int inta = 0;
+            int intb = 1;
+
+            Assert.That(Util.swap(a,inta,intb), Is.EqualTo(b));
+        }
+
+        [Test]
+        public void TestStringSwap2()
+        {
+            string a = "rowanaustinhaha";
+            string b = "nowanaustirhaha";
+            int inta = 0;
+            int intb = 10;
+
+            Assert.That(Util.swap(a,inta,intb), Is.EqualTo(b));
+        }
     }
 }
