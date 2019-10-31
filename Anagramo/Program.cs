@@ -10,8 +10,16 @@ namespace Anagramo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter a two letter word");
-            var  x = Console.Read();
+            Console.WriteLine("Enter a word");
+
+            while (true)
+            {
+                var permuteString = Console.ReadLine();
+                if (permuteString != null)
+                {
+                    Permuter.GetPermutations(permuteString.ToCharArray());
+                }
+            }
         }
     }
 }
