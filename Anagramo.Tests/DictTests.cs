@@ -13,5 +13,14 @@ namespace Anagramo.Tests
             Assert.True(ourDictionary.isEnglishWord(testInput));
 
         }
+
+        public void TestBanana()
+        {
+            EnglishDictionary ourDictionary = new EnglishDictionary();
+            string testInput = "Banana";
+
+            Assert.True(ourDictionary.isEnglishWord(testInput));
+
+        }
     }
 }
