@@ -14,6 +14,7 @@ namespace Anagramo.Tests
 
         }
 
+        [Test]
         public void TestBanana()
         {
             EnglishDictionary ourDictionary = new EnglishDictionary();
@@ -22,5 +23,16 @@ namespace Anagramo.Tests
             Assert.True(ourDictionary.isEnglishWord(testInput));
 
         }
+
+        [Test]
+        public void TestMissingWordABC()
+        {
+            EnglishDictionary ourDictionary = new EnglishDictionary();
+            string testInput = "abc";
+
+            Assert.False(ourDictionary.isEnglishWord(testInput));
+
+        }
+        
     }
 }
