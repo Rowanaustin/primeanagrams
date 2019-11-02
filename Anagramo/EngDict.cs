@@ -4,19 +4,15 @@ namespace Anagramo
 {
     class EnglishDictionary
     {
-        private string[] listOfWords;
-        public EnglishDictionary()
-        {
-            string[] listOfWords = new string[5]{"Apple", "Banana", "Codfruit", "Derling", "Elgar"};
-        }
+        private string listOfWords = "Apple";
+        
         public bool isEnglishWord(string input)
         {
-            for (int i = 0; i < listOfWords.Length; i++)
-            {
-                if (input == listOfWords[i])
+                if (input == listOfWords)
                 {return true;}
-            }
-            return false;
+                else
+                {return false;}
+
         }
 
         
