@@ -11,7 +11,7 @@ namespace Anagramo
         static void Main(string[] args)
         {
             var dict = new ComboDict();
-            dict.AddBulkFromTextFile("./data/listOfWords.txt");
+            dict.AddBulkFromTextFile("./data/listOfWords.txt"); //Currently http://sherwoodschool.ru/vocabulary/proficiency/ 
             Console.WriteLine("Enter a word");
             var input = Console.ReadLine();
             var output = dict.GetWordsByWord(input);
