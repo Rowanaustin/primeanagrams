@@ -17,8 +17,7 @@ namespace Anagramo
             var output = dict.GetWordsByWord(input);
             if (output == null)
             {
-                output = new System.Collections.Generic.List<string>();
-                output.Add("No matching words founds");
+                output = new System.Collections.Generic.List<string>(){"No matching words founds"};
             }
 
             Console.WriteLine("------------");

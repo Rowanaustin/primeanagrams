@@ -45,8 +45,9 @@ namespace Anagramo
 
         internal static int GetComboKey(string s)
         {
+            string cleanS = Util.CleanWordInput(s);
             int key = 1;
-            foreach (char c in s)
+            foreach (char c in cleanS)
             {
                 int prime = _primeAlphabet[c];
                 key *= prime;
@@ -64,7 +65,7 @@ namespace Anagramo
                 _container[key] = new List<string>();
             }
             
-            _container[GetComboKey(word)].Add(word);
+            _container[key].Add(word);
         }
 
         public void AddBulkFromTextFile(string filePath)
@@ -72,7 +73,7 @@ namespace Anagramo
             var lines = File.ReadLines(filePath);
             foreach (var line in lines)
             {
-                string wordToAdd = new string(Util.CleanWordInput(line));
+                string wordToAdd = new string(line);
                 Add(wordToAdd);
             }
 
