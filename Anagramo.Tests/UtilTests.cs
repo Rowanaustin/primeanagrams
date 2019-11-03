@@ -121,5 +121,14 @@ namespace Anagramo.Tests
             
             Assert.That(Util.CleanWordInput(input), Is.EqualTo(expt));
         }
+
+        [Test]
+        public void ApostropheRemoved()
+        {
+            string input = "as'you'see";
+            string expt = "asyousee";
+            
+            Assert.That(Util.CleanWordInput(input), Is.EqualTo(expt));
+        }
     }
 }
