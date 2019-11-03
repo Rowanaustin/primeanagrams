@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Linq;
 
 namespace Anagramo.Tests
 {
@@ -34,5 +35,27 @@ namespace Anagramo.Tests
 
         }
         
+        [Test]
+        public void TestPermutationsReturnsTrue()
+        {
+            EnglishDictionary ourDictionary = new EnglishDictionary();
+            /* This should return true for the word 'apple' */
+            var testInput = "Aelpp".ToCharArray();
+            var dictionaryInput = testInput.GetPermutations();
+
+            Assert.True(ourDictionary.containsEnglishWord(dictionaryInput));
+
+        }
+
+        [Test]
+        public void TestPermutationsReturnsFalse()
+        {
+            EnglishDictionary ourDictionary = new EnglishDictionary();
+            var testInput = "Aelpx".ToCharArray();
+            var dictionaryInput = testInput.GetPermutations();
+
+            Assert.False(ourDictionary.containsEnglishWord(dictionaryInput));
+
+        }
     }
 }

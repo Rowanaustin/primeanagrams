@@ -1,4 +1,8 @@
 using System.IO;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Anagramo
 {
@@ -17,6 +21,25 @@ namespace Anagramo
             }
             
             return result;
+
+        }
+
+        public bool containsEnglishWord(IEnumerable<IEnumerable<char>> input)
+        {
+            foreach (var inputElement in input)
+            {
+                Console.WriteLine(inputElement.ToString());
+                
+                foreach (var realWord in listOfWords)
+                {
+                    var charArray = inputElement.ToArray();
+                    string elementString = new string(charArray);
+                    if (elementString == realWord)
+                    return true;
+                }
+            }
+            
+            return false;
 
         }
 

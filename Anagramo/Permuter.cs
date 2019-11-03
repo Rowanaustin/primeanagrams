@@ -34,7 +34,8 @@ namespace Anagramo
                 var newPerm = new List<T>(perm);
                 result.Add(newPerm);
                 
-                PrintList(newPerm);
+                // COMMMENTED OUT - prints every permutation as it is calculated
+                // PrintList(newPerm);
             }
             else
             {
