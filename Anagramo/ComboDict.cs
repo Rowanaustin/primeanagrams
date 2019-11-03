@@ -72,7 +72,7 @@ namespace Anagramo
             var lines = File.ReadLines(filePath);
             foreach (var line in lines)
             {
-                string wordToAdd = new string(line);
+                string wordToAdd = new string(Util.CleanWordInput(line));
                 Add(wordToAdd);
             }
 
