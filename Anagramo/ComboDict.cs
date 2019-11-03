@@ -1,9 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System;
+
 
 namespace Anagramo
 {
+    
     public class ComboDict
     {
+        private const int BufferSize = 128;
+
         // Letters by frequency in English http://pi.math.cornell.edu/~mec/2003-2004/cryptography/subs/frequencies.html
         private static Dictionary<char, int> _primeAlphabet = new Dictionary<char, int>()
         {
@@ -59,6 +65,17 @@ namespace Anagramo
             }
             
             _container[GetComboKey(word)].Add(word);
+        }
+
+        public void AddBulkFromTextFile(string filePath)
+        {
+            var lines = File.ReadLines(filePath);
+            foreach (var line in lines)
+            {
+                string wordToAdd = new string(line);
+                Add(wordToAdd);
+            }
+
         }
 
         public List<string> GetWordsByKey(int key)

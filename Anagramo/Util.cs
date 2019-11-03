@@ -1,5 +1,6 @@
 using System;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace Anagramo
 {
@@ -43,6 +44,16 @@ namespace Anagramo
         public static string CleanWordInput(string input)
         {
             Regex reg = new Regex("[^a-zA-Z']");
-            return reg.Replace(input.ToLower(), string.Empty);        }
+            return reg.Replace(input.ToLower(), string.Empty);        
+        }
+
+        public static void PrintStringCollection(ICollection<string> input)
+        {
+
+            foreach (string element in input)
+            {
+                Console.WriteLine(element);
+            }
+        }
     }
 }

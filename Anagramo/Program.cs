@@ -10,16 +10,22 @@ namespace Anagramo
     {
         static void Main(string[] args)
         {
+            var dict = new ComboDict();
+            dict.AddBulkFromTextFile("./data/listOfWords.txt");
             Console.WriteLine("Enter a word");
-
-            while (true)
+            var input = Console.ReadLine();
+            var output = dict.GetWordsByWord(input);
+            if (output == null)
             {
-                var permuteString = Console.ReadLine();
-                if (permuteString != null)
-                {
-                    Permuter.GetPermutations(permuteString.ToCharArray());
-                }
+                output = new System.Collections.Generic.List<string>();
+                output.Add("No matching words founds");
             }
+
+            Console.WriteLine("------------");
+            Console.WriteLine("Matching words are:");
+            Util.PrintStringCollection(output);
+            
+            
         }
     }
 }

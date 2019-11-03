@@ -60,5 +60,6 @@ namespace Anagramo.Tests
             
             Assert.That(dict.GetWordsByWord(word1).Contains(word2));
         }
+
     }
 }
