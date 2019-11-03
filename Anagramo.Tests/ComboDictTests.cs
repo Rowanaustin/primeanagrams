@@ -61,5 +61,21 @@ namespace Anagramo.Tests
             Assert.That(dict.GetWordsByWord(word1).Contains(word2));
         }
 
+
+        [Test]
+        public void WordsAreReturnedInOriginalFormat()
+        {
+            string dictionaryInput = "African-American";
+            string userInput = "africanamerican";
+            var dict = new ComboDict();
+            
+            dict.Add(dictionaryInput);
+
+            // Create a list of strings to compare with our output
+            System.Collections.Generic.List<string> expectedOutput = new System.Collections.Generic.List<string>(){dictionaryInput};
+            
+            Assert.That(expectedOutput, Is.EqualTo(dict.GetWordsByWord(userInput)));
+        }
+
     }
 }
