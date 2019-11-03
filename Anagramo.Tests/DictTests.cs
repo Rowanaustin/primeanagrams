@@ -57,5 +57,16 @@ namespace Anagramo.Tests
             Assert.False(ourDictionary.containsEnglishWord(dictionaryInput));
 
         }
+
+        [Test]
+        public void TestPermutationsBanana()
+        {
+            EnglishDictionary ourDictionary = new EnglishDictionary();
+            var testInput = "ananab".ToCharArray();
+            var dictionaryInput = testInput.GetPermutations();
+
+            Assert.False(ourDictionary.containsEnglishWord(dictionaryInput));
+
+        }
     }
 }
