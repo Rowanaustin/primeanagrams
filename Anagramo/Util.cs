@@ -43,7 +43,7 @@ namespace Anagramo
 
         public static string CleanWordInput(string input)
         {
-            Regex reg = new Regex("[^a-zA-Z']");
+            Regex reg = new Regex("[^a-zA-Z]");
             return reg.Replace(input.ToLower(), string.Empty);        
         }
 
