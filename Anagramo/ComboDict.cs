@@ -51,6 +51,13 @@ namespace Anagramo
 
         public void Add(string word)
         {
+            int key = GetComboKey(word);
+
+            if (!_container.ContainsKey(key))
+            {
+                _container[key] = new List<string>();
+            }
+            
             _container[GetComboKey(word)].Add(word);
         }
 

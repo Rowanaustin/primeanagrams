@@ -4,26 +4,29 @@ namespace Anagramo.Tests
 {
     public class ComboDictTests
     {
+        [Test]
         public void CreatesCorrectKeyForThreeLetterWord()
         {
-            string word = "Gym";
+            string word = "gym";
             int key = 61 * 53 * 43;
 
 
-            Assert.That(ComboDict.GetComboKey(word) == key);
+            Assert.That(ComboDict.GetComboKey(word), Is.EqualTo(key));
         }
         
+        [Test]
         public void CreatesCorrectKeyForSixLetterWord()
         {
-            string word = "Weight";
+            string word = "weight";
             int key = 59 * 2 * 11 * 61 * 23 * 3;
 
-            Assert.That(ComboDict.GetComboKey(word) == key);
+            Assert.That(ComboDict.GetComboKey(word), Is.EqualTo(key));
         }
 
+        [Test]
         public void CanAddWord()
         {
-            string word = "Box";
+            string word = "box";
             int key = ComboDict.GetComboKey(word);
             var dict = new ComboDict();
             
@@ -32,22 +35,24 @@ namespace Anagramo.Tests
             Assert.That(dict.GetWordsByKey(key).Contains(word));
         }
 
+        [Test]
         public void AnagrammaticWordsHaveSameKey()
         {
-            string word1 = "God";
-            string word2 = "Dog";
+            string word1 = "god";
+            string word2 = "dog";
             var dict = new ComboDict();
 
             int key1 = ComboDict.GetComboKey(word1);
             int key2 = ComboDict.GetComboKey(word2);
             
-            Assert.That(key1 == key2);
+            Assert.That(key1, Is.EqualTo(key2));
         }
 
+        [Test]
         public void AnagrammaticWordsAreInSameList()
         {
-            string word1 = "Thread";
-            string word2 = "Hatred";
+            string word1 = "thread";
+            string word2 = "hatred";
             var dict = new ComboDict();
             
             dict.Add(word1);

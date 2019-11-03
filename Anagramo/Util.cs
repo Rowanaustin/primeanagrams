@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 
 namespace Anagramo
 {
@@ -38,5 +39,10 @@ namespace Anagramo
 
             return new string(tempChardonarray);
         }
+
+        public static string CleanWordInput(string input)
+        {
+            Regex reg = new Regex("[^a-zA-Z']");
+            return reg.Replace(input.ToLower(), string.Empty);        }
     }
 }

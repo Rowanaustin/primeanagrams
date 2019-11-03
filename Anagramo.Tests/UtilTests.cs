@@ -103,5 +103,23 @@ namespace Anagramo.Tests
 
             Assert.That(a.SwapChars(inta,intb), Is.EqualTo(b));
         }
+
+        [Test]
+        public void UppercaseBecomesLowercase()
+        {
+            string input = "AbCdefGG";
+            string expt = "abcdefgg";
+            
+            Assert.That(Util.CleanWordInput(input), Is.EqualTo(expt));
+        }
+        
+        [Test]
+        public void NonAlphaCharactersRemoved()
+        {
+            string input = "Ab1C2de f;;=>G,G";
+            string expt = "abcdefgg";
+            
+            Assert.That(Util.CleanWordInput(input), Is.EqualTo(expt));
+        }
     }
 }
