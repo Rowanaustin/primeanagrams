@@ -43,7 +43,7 @@ namespace Anagramo
 
         private Dictionary<int, List<string>> _container = new Dictionary<int, List<string>>();
 
-        internal static int GetComboKey(string s)
+        public static int GetComboKey(string s)
         {
             string cleanS = Util.CleanWordInput(s);
             int key = 1;

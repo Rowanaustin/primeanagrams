@@ -1,6 +1,7 @@
 using System;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Anagramo
 {
@@ -54,6 +55,32 @@ namespace Anagramo
             {
                 Console.WriteLine(element);
             }
+        }
+
+        public static void PrintIntList(List<int> input)
+        {
+
+            foreach (int element in input)
+            {
+                Console.WriteLine(element);
+            }
+        }
+
+        public static int MultiplyIntListTogether(List<int> input)
+        {
+            int output = 1;
+            foreach (int element in input)
+            {
+                output *= element;
+            }
+
+            return output;
+        }
+
+        public static List<int> Factors(this int me)
+        {
+            return Enumerable.Range(1, me).Where(x => me % x == 0).ToList();
+            
         }
     }
 }
