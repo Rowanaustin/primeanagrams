@@ -8,10 +8,10 @@ namespace Anagramo
     
     public class ComboDict
     {
-        private const int BufferSize = 128;
+        private const ulong BufferSize = 128;
 
         // Letters by frequency in English http://pi.math.cornell.edu/~mec/2003-2004/cryptography/subs/frequencies.html
-        private static Dictionary<char, int> _primeAlphabet = new Dictionary<char, int>()
+        private static Dictionary<char, ulong> _primeAlphabet = new Dictionary<char, ulong>()
         {
             {'e', 2},
             {'t', 3},
@@ -41,25 +41,25 @@ namespace Anagramo
             {'z', 101},
         };
 
-        private Dictionary<int, List<string>> _container = new Dictionary<int, List<string>>();
+        private Dictionary<ulong, List<string>> _container = new Dictionary<ulong, List<string>>();
 
-        public static int GetComboKey(string s)
+        public static ulong GetComboKey(string s)
         {
             string cleanS = Util.CleanWordInput(s);
-            int key = 1;
+            ulong key = 1;
             foreach (char c in cleanS)
             {
-                int prime = _primeAlphabet[c];
+                ulong prime = _primeAlphabet[c];
                 key *= prime;
             }
 
             return key;
         }
 
-        public static List<int> GetCharacterKeys(string s)
+        public static List<ulong> GetCharacterKeys(string s)
         {
             string cleanS = Util.CleanWordInput(s);
-            var output = new List<int>();
+            var output = new List<ulong>();
 
             foreach (char c in cleanS)
             {
@@ -73,7 +73,7 @@ namespace Anagramo
 
         public void Add(string word)
         {
-            int key = GetComboKey(word);
+            ulong key = GetComboKey(word);
 
             if (!_container.ContainsKey(key))
             {
@@ -94,7 +94,7 @@ namespace Anagramo
 
         }
 
-        public List<string> GetWordsByKey(int key)
+        public List<string> GetWordsByKey(ulong key)
         {
             if (_container.ContainsKey(key))
             {
@@ -109,7 +109,7 @@ namespace Anagramo
         }
 
         // Made this so we didn't have to deal with there being multiple words returned for a key in the dictionary
-        public string GetFirstWordFromKey(int key)
+        public string GetFirstWordFromKey(ulong key)
         {
             if (_container.ContainsKey(key))
             {

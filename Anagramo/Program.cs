@@ -17,8 +17,8 @@ namespace Anagramo
 
             // Initialise containers
             var output = new List<List<string>>();
-            var anagrammableFactors = new List<int>();
-            var finalFactors = new List<int>();
+            var anagrammableFactors = new List<ulong>();
+            var finalFactors = new List<ulong>();
 
             // Initialise dictionary from file
             dict.AddBulkFromTextFile("./data/listOfWords.txt"); //See http://www.mieliestronk.com/wordlist.html
@@ -28,7 +28,7 @@ namespace Anagramo
             var input = Console.ReadLine();
             
             // Find the product (the Key) and all the other factors of the input
-            int bigNumber = ComboDict.GetComboKey(input);
+            ulong bigNumber = ComboDict.GetComboKey(input);
             var allFactors =  Util.Factors(bigNumber);
 
             
@@ -36,7 +36,7 @@ namespace Anagramo
             // Add the prime factors to the final list of all factors, and then also the non-prime factors, preserving prime duplicates
             // I just realised this might mean if there's four '2's we won't find the anagrams for (4,4) as well as (2,2,4)
             finalFactors = ComboDict.GetCharacterKeys(input);
-            foreach (int fctr in allFactors)
+            foreach (ulong fctr in allFactors)
             {
                 if (!anagrammableFactors.Contains(fctr))
                 {
@@ -45,7 +45,7 @@ namespace Anagramo
             }
 
             // Add the anagrammable factors to yet another List :)
-            foreach (int fctr in finalFactors)
+            foreach (ulong fctr in finalFactors)
             {
                 if (!(dict.GetWordsByKey(fctr)== null))
                 {
@@ -59,11 +59,11 @@ namespace Anagramo
 
             // Add the lists of ints to the output as lists of strings using dict
             // At the moment it just adds the first hit from the dictionary
-            foreach (List<int> anagram in anagramKeys)
+            foreach (List<ulong> anagram in anagramKeys)
             {
                 List<string> anagramWords = new List<string>();
 
-                foreach (int k in anagram)
+                foreach (ulong k in anagram)
                 {
                     anagramWords.Add(dict.GetFirstWordFromKey(k));
                 }
@@ -74,12 +74,10 @@ namespace Anagramo
 
             if (output.Count != 0)
             {
+                Console.WriteLine("------------");
+                Console.WriteLine("Matching words are:");
 
-            Console.WriteLine("------------");
-            Console.WriteLine("Matching words are:");
-
-            Util.PrintListOfStringLists(output);
-
+                Util.PrintListOfStringLists(output);
             }
             else
             {

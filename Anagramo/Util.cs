@@ -7,16 +7,18 @@ namespace Anagramo
 {
     internal static class Util
     {
-        public static int GenerateFactorial(int a)
+        public static ulong GenerateFactorial(ulong a)
         {
+
+            
             // A Factorial of 13 would bring us over the max value of an Int32
             // TODO: Use uGrimmage if the extra range is needed
-            const int INPUT_MAX = 12;
+            const ulong INPUT_MAX = 12;
 
             if (a >= 0 && a <= INPUT_MAX)
             {
-                int b = 1;
-                for (int i = a; i > 1; i--)
+                ulong b = 1;
+                for (ulong i = a; i > 1; i--)
                 {
                     b *= i;
                 }
@@ -30,7 +32,7 @@ namespace Anagramo
         }
 
 
-        public static string SwapChars(this string s, int a, int b)
+        public static string SwapChars(this string s, ulong a, ulong b)
         {
             char[] tempChardonarray = s.ToCharArray();
 
@@ -68,11 +70,11 @@ namespace Anagramo
             }
         }
 
-        public static void PrintIntList(List<int> input)
+        public static void PrintULongList(List<ulong> input)
         {
             Console.Write("{ ");
 
-            foreach (int element in input)
+            foreach (ulong element in input)
             {
                 if (!(element == input[0])) 
                 { Console.Write(", ");}
@@ -83,11 +85,11 @@ namespace Anagramo
             Console.Write(" }\n");
         }
 
-        public static int MultiplyIntListTogether(List<int> input)
+        public static ulong MultiplyIntListTogether(List<ulong> input)
         {
-            int output = 1;
+            ulong output = 1;
             
-            foreach (int element in input)
+            foreach (ulong element in input)
             {
                 output *= element;
             }
@@ -95,11 +97,21 @@ namespace Anagramo
             return output;
         }
 
-        public static List<int> Factors(this int me)
+        public static List<ulong> Factors(this ulong number)
         {
-            Console.WriteLine("Finding factors for " + me);
-            return Enumerable.Range(1, me).Where(x => me % x == 0).ToList();
-            
+            var output = new List<ulong>();
+
+            Console.WriteLine("Finding factors of " + number);
+
+            for (ulong i=1; i <= number; i++)
+            {
+                if (number % i == 0)
+                {
+                    output.Add(i);
+                }
+            }
+            return output;
+            /* return Enumerable.Range(1, me).Where(x => me % x == 0).ToList(); */
         }
     }
 }
