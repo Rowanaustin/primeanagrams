@@ -13,19 +13,20 @@ namespace Anagramo
         {
             // initialise class objects
             var myAlgorithm = new FactorGroupings();
-            var dict = new ComboDict(); 
 
             // Initialise containers
             var output = new List<List<string>>();
             var anagrammableFactors = new List<ulong>();
             var finalFactors = new List<ulong>();
 
-            // Initialise dictionary from file
-            dict.AddBulkFromTextFile("./data/listOfWords.txt"); //See http://www.mieliestronk.com/wordlist.html
-
             // Begin with user input
             Console.WriteLine("Enter a word");
             var input = Console.ReadLine();
+
+            var dict = new ComboDict(input); 
+
+            // Initialise dictionary from file
+            dict.AddBulkFromTextFile("./data/listOfWords.txt"); //See http://www.mieliestronk.com/wordlist.html
             
             // Find the product (the Key) and all the other factors of the input
             ulong bigNumber = ComboDict.GetComboKey(input);

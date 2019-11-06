@@ -44,11 +44,11 @@ namespace Anagramo
 
         public void FindAllFactorGroups(List<ulong> factors,ulong ultimateProduct,List<ulong> group)
         {
-            Console.Write("Building possible group... ");
+/*             Console.Write("Building possible group... ");
             if (group.Any())
             {
                 Util.PrintULongList(group);
-            }
+            } */
 
             int factorsCount = factors.Count;
             ulong currentProduct;

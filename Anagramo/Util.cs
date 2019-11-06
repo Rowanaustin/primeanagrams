@@ -7,6 +7,18 @@ namespace Anagramo
 {
     internal static class Util
     {
+        public static void PrintDictionary<TK, TV>(Dictionary<TK,TV> dict) 
+        {
+            if (dict == null)
+                return;
+
+            foreach (var key in dict.Keys)
+            {
+                Console.WriteLine((nameof(dict)));
+                Console.WriteLine($"[{key},{dict[key]}]");
+            }
+        }
+
         public static ulong GenerateFactorial(ulong a)
         {
 

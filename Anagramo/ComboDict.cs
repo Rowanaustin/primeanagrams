@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System;
+using System.Linq;
 
 
 namespace Anagramo
@@ -11,57 +12,96 @@ namespace Anagramo
         private const ulong BufferSize = 128;
 
         // Letters by frequency in English http://pi.math.cornell.edu/~mec/2003-2004/cryptography/subs/frequencies.html
-        private static Dictionary<char, ulong> _primeAlphabet = new Dictionary<char, ulong>()
+        
+        private static List<ulong> _primes = new List<ulong>
         {
-            {'e', 2},
-            {'t', 3},
-            {'a', 5},
-            {'o', 7},
-            {'i', 11},
-            {'n', 13},
-            {'s', 17},
-            {'r', 19},
-            {'h', 23},
-            {'d', 29},
-            {'l', 31},
-            {'u', 37},
-            {'c', 41},
-            {'m', 43},
-            {'f', 47},
-            {'y', 53},
-            {'w', 59},
-            {'g', 61},
-            {'p', 67},
-            {'b', 71},
-            {'v', 73},
-            {'k', 79},
-            {'x', 83},
-            {'q', 89},
-            {'j', 97},
-            {'z', 101},
+            2,
+            3,
+            5,
+            7, 
+            11,
+            13,
+            17,
+            19,
+            23,
+            29,
+            31,
+            37,
+            41,
+            43,
+            47,
+            53,
+            59,
+            61,
+            67,
+            71,
+            73,
+            79,
+            83,
+            89,
+            97,
+            101
         };
+        
+        private static Dictionary<char, ulong> _primeAlphabet = new Dictionary<char, ulong>();
 
         private Dictionary<ulong, List<string>> _container = new Dictionary<ulong, List<string>>();
 
-        public static ulong GetComboKey(string s)
+        public ComboDict(string wordInput)
         {
-            string cleanS = Util.CleanWordInput(s);
-            ulong key = 1;
-            foreach (char c in cleanS)
+            wordInput = Util.CleanWordInput(wordInput);
+            int currentPrimeIndex = 0;
+
+            Dictionary<char,int> frequencyMap = new Dictionary<char, int>();
+            foreach (char c in wordInput)
             {
-                ulong prime = _primeAlphabet[c];
-                key *= prime;
+                if (!frequencyMap.ContainsKey(c))
+                {
+                    frequencyMap[c] = 1;
+                    continue;
+                }
+                frequencyMap[c]++;
             }
 
+
+            var keys = new List<char>(frequencyMap.Keys);
+            keys.OrderByDescending(x => frequencyMap[x]);
+
+            foreach (char c in keys)
+            {
+                if (!_primeAlphabet.ContainsKey(c))
+                {
+                    ulong currentPrime = _primes[currentPrimeIndex];
+                    _primeAlphabet[c] = currentPrime;
+                    currentPrimeIndex++;
+                }                
+            }
+
+            Util.PrintDictionary(_primeAlphabet);
+        }
+
+        public static ulong GetComboKey(string s)
+        {
+            s = Util.CleanWordInput(s);
+            ulong key = 1;
+            foreach (char c in s)
+            {
+                if (!_primeAlphabet.ContainsKey(c))
+                {
+                    return 0;
+                }
+
+                key *= _primeAlphabet[c];
+            }
             return key;
         }
 
         public static List<ulong> GetCharacterKeys(string s)
         {
-            string cleanS = Util.CleanWordInput(s);
+            s = Util.CleanWordInput(s);
             var output = new List<ulong>();
 
-            foreach (char c in cleanS)
+            foreach (char c in s)
             {
                 output.Add(_primeAlphabet[c]);
                 
@@ -74,6 +114,13 @@ namespace Anagramo
         public void Add(string word)
         {
             ulong key = GetComboKey(word);
+
+            if (key == 0)
+            {
+                //Console.WriteLine($"Tried to add {word} but it had unscrupulous characters");
+                return;
+            }
+
 
             if (!_container.ContainsKey(key))
             {
