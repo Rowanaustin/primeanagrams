@@ -56,6 +56,21 @@ namespace Anagramo
             return key;
         }
 
+        public static List<int> GetCharacterKeys(string s)
+        {
+            string cleanS = Util.CleanWordInput(s);
+            var output = new List<int>();
+
+            foreach (char c in cleanS)
+            {
+                output.Add(_primeAlphabet[c]);
+                
+            }
+
+            return output;
+        }
+
+
         public void Add(string word)
         {
             int key = GetComboKey(word);
@@ -92,5 +107,19 @@ namespace Anagramo
         {
             return GetWordsByKey(GetComboKey(word));
         }
+
+        // Made this so we didn't have to deal with there being multiple words returned for a key in the dictionary
+        public string GetFirstWordFromKey(int key)
+        {
+            if (_container.ContainsKey(key))
+            {
+                return _container[key][0];
+            }
+            else 
+            {
+                return null;
+            }
+        }
+
     }
 }

@@ -48,27 +48,45 @@ namespace Anagramo
             return reg.Replace(input.ToLower(), string.Empty);        
         }
 
-        public static void PrintStringCollection(ICollection<string> input)
+        public static void PrintStringList(List<string> input)
         {
 
             foreach (string element in input)
             {
-                Console.WriteLine(element);
+                Console.Write(element + " ");
+            }
+
+            Console.WriteLine();
+        }
+
+        public static void PrintListOfStringLists(List<List<string>> input)
+        {
+
+            foreach (List<string> element in input)
+            {
+                PrintStringList(element);
             }
         }
 
         public static void PrintIntList(List<int> input)
         {
+            Console.Write("{ ");
 
             foreach (int element in input)
             {
-                Console.WriteLine(element);
+                if (!(element == input[0])) 
+                { Console.Write(", ");}
+
+                Console.Write(element);
             }
+
+            Console.Write(" }\n");
         }
 
         public static int MultiplyIntListTogether(List<int> input)
         {
             int output = 1;
+            
             foreach (int element in input)
             {
                 output *= element;
@@ -79,6 +97,7 @@ namespace Anagramo
 
         public static List<int> Factors(this int me)
         {
+            Console.WriteLine("Finding factors for " + me);
             return Enumerable.Range(1, me).Where(x => me % x == 0).ToList();
             
         }
