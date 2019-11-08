@@ -53,16 +53,10 @@ namespace Anagramo
             int factorsCount = factors.Count;
             ulong currentProduct;
 
-            // If the group is empty, use a current product of 1 to allow multiplication
-            if (!group.Any())
-            {
-                currentProduct = 1;
-            }
-            // Else get the current product by multiplying the current group elements together
-            else
-            {
-                currentProduct = Util.MultiplyIntListTogether(group);
-            }
+            // The product of all factors in the group, or 1 if empty.
+            currentProduct = group.Any() ? Util.GetProduct(group) : 1;
+
+            
 
             // If the current product is the ultimate product, add the current group to the output
             if (currentProduct == ultimateProduct)
