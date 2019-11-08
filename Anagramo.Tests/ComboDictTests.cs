@@ -5,32 +5,13 @@ namespace Anagramo.Tests
     public class ComboDictTests
     {
         [Test]
-        public void CreatesCorrectKeyForThreeLetterWord()
-        {
-            string word = "gym";
-            int key = 61 * 53 * 43;
-
-
-            Assert.That(ComboDict.GetComboKey(word), Is.EqualTo(key));
-        }
-        
-        [Test]
-        public void CreatesCorrectKeyForSixLetterWord()
-        {
-            string word = "weight";
-            int key = 59 * 2 * 11 * 61 * 23 * 3;
-
-            Assert.That(ComboDict.GetComboKey(word), Is.EqualTo(key));
-        }
-
-        [Test]
         public void CanAddWord()
         {
             string word = "box";
-            int key = ComboDict.GetComboKey(word);
-            var dict = new ComboDict();
-            
+
+            var dict = new ComboDict(word);
             dict.Add(word);
+            ulong key = ComboDict.GetComboKey(word);
             
             Assert.That(dict.GetWordsByKey(key).Contains(word));
         }
@@ -40,10 +21,10 @@ namespace Anagramo.Tests
         {
             string word1 = "god";
             string word2 = "dog";
-            var dict = new ComboDict();
+            var dict = new ComboDict(word2);
 
-            int key1 = ComboDict.GetComboKey(word1);
-            int key2 = ComboDict.GetComboKey(word2);
+            ulong key1 = ComboDict.GetComboKey(word1);
+            ulong key2 = ComboDict.GetComboKey(word2);
             
             Assert.That(key1, Is.EqualTo(key2));
         }
@@ -53,28 +34,10 @@ namespace Anagramo.Tests
         {
             string word1 = "thread";
             string word2 = "hatred";
-            var dict = new ComboDict();
-            
-            dict.Add(word1);
+            var dict = new ComboDict(word1);
             dict.Add(word2);
             
             Assert.That(dict.GetWordsByWord(word1).Contains(word2));
-        }
-
-
-        [Test]
-        public void WordsAreReturnedInOriginalFormat()
-        {
-            string dictionaryInput = "African-American";
-            string userInput = "africanamerican";
-            var dict = new ComboDict();
-            
-            dict.Add(dictionaryInput);
-
-            // Create a list of strings to compare with our output
-            System.Collections.Generic.List<string> expectedOutput = new System.Collections.Generic.List<string>(){dictionaryInput};
-            
-            Assert.That(expectedOutput, Is.EqualTo(dict.GetWordsByWord(userInput)));
         }
 
     }
