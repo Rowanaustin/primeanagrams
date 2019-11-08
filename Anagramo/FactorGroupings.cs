@@ -42,6 +42,7 @@ namespace Anagramo
 
 
 
+
         public void FindAllFactorGroups(List<ulong> factors,ulong ultimateProduct,List<ulong> group)
         {
 /*             Console.Write("Building possible group... ");
@@ -50,13 +51,10 @@ namespace Anagramo
                 Util.PrintULongList(group);
             } */
 
-            int factorsCount = factors.Count;
             ulong currentProduct;
 
             // The product of all factors in the group, or 1 if empty.
-            currentProduct = group.Any() ? Util.GetProduct(group) : 1;
-
-            
+            currentProduct = group.Any() ? Util.MultiplyIntListTogether(group) : 1;
 
             // If the current product is the ultimate product, add the current group to the output
             if (currentProduct == ultimateProduct)
@@ -73,18 +71,18 @@ namespace Anagramo
                 return;
             }
 
-            for (int i = 0; i < factorsCount; i++)
+            int count = factors.Count;
+            for (int i = 0; i < count; i++)
             {
                 ulong possibleFactor =  factors[i];
                 List<ulong> newGroup = new List<ulong>(group);
                 newGroup.Add(possibleFactor);
-                List<ulong> remainingFactors = factors.GetRange(i+1,factorsCount-i-1);
+                List<ulong> remainingFactors = factors.GetRange(i+1,count-i-1);
                 // Start a recursion with the new group
                 FindAllFactorGroups(remainingFactors,ultimateProduct,newGroup);
 
             }
         }
-        
     }
 }
 
