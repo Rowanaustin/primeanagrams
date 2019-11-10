@@ -40,9 +40,6 @@ namespace Anagramo
             }
         }   
 
-
-
-
         public void FindAllFactorGroups(List<ulong> factors,ulong ultimateProduct,List<ulong> group)
         {
 /*             Console.Write("Building possible group... ");

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 //This line means that all of our "internal" classes are exposed to our Test project
 //Notice that the Calculator class is internal - see what happens if you comment this line and try to build the solution
@@ -30,9 +31,18 @@ namespace Anagramo
             
             // Find the product (the Key) and all the other factors of the input
             ulong bigNumber = ComboDict.GetComboKey(input);
-            var allFactors =  Util.Factors(bigNumber);
 
-            
+
+            // Profiling the factor algorithm.
+            var factorProfiler = new Stopwatch();
+            factorProfiler.Start();
+
+            //var allFactors =  Util.Factors(bigNumber);
+            var allFactors = Factors.GetFactors(bigNumber);
+
+            factorProfiler.Stop();
+            Console.WriteLine($"Getting factors took {factorProfiler.Elapsed}");
+
 
             // Add the prime factors to the final list of all factors, and then also the non-prime factors, preserving prime duplicates
             // I just realised this might mean if there's four '2's we won't find the anagrams for (4,4) as well as (2,2,4)
