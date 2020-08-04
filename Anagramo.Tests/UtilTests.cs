@@ -7,8 +7,8 @@ namespace Anagramo.Tests
         [Test]
         public void TestFactorialZero()
         {
-            int a = 0;
-            int b = 1;
+            ulong a = 0;
+            ulong b = 1;
 
             Assert.That(Util.GenerateFactorial(a), Is.EqualTo(b));
             
@@ -17,8 +17,8 @@ namespace Anagramo.Tests
         [Test]
         public void TestFactorialOne()
         {
-            int a = 1;
-            int b = 1;
+            ulong a = 1;
+            ulong b = 1;
 
             Assert.That(Util.GenerateFactorial(a), Is.EqualTo(b));
             
@@ -27,8 +27,8 @@ namespace Anagramo.Tests
         [Test]
         public void TestFactorialTwo()
         {
-            int a = 2;
-            int b = 2;
+            ulong a = 2;
+            ulong b = 2;
 
             Assert.That(Util.GenerateFactorial(a), Is.EqualTo(b));
             
@@ -37,8 +37,8 @@ namespace Anagramo.Tests
         [Test]
         public void TestFactorialThree()
         {
-            int a = 3;
-            int b = 6;
+            ulong a = 3;
+            ulong b = 6;
 
             Assert.That(Util.GenerateFactorial(a), Is.EqualTo(b));
             
@@ -47,8 +47,8 @@ namespace Anagramo.Tests
         [Test]
         public void TestFactorialFour()
         {
-            int a = 4;
-            int b = 24;
+            ulong a = 4;
+            ulong b = 24;
 
             Assert.That(Util.GenerateFactorial(a), Is.EqualTo(b));
             
@@ -57,8 +57,8 @@ namespace Anagramo.Tests
         [Test]
         public void TestFactorialFive()
         {
-            int a = 5;
-            int b = 120;
+            ulong a = 5;
+            ulong b = 120;
 
             Assert.That(Util.GenerateFactorial(a), Is.EqualTo(b));
             
@@ -67,8 +67,8 @@ namespace Anagramo.Tests
         [Test]
         public void TestFactorialTwelve()
         {
-            int a = 12;
-            int b = 479001600;
+            ulong a = 12;
+            ulong b = 479001600;
 
             Assert.That(Util.GenerateFactorial(a), Is.EqualTo(b));
         }
@@ -76,8 +76,8 @@ namespace Anagramo.Tests
         [Test]
         public void TestFactorialThirteenReturnsZero()
         {
-            int a = 13;
-            int b = 0;
+            ulong a = 13;
+            ulong b = 0;
 
             Assert.That(Util.GenerateFactorial(a), Is.EqualTo(b));
         }
@@ -87,10 +87,10 @@ namespace Anagramo.Tests
         {
             string a = "ab";
             string b = "ba";
-            int inta = 0;
-            int intb = 1;
+            ulong ulonga = 0;
+            ulong ulongb = 1;
 
-            Assert.That(a.SwapChars(inta,intb), Is.EqualTo(b));
+            Assert.That(a.SwapChars(ulonga,ulongb), Is.EqualTo(b));
         }
 
         [Test]
@@ -98,10 +98,37 @@ namespace Anagramo.Tests
         {
             string a = "rowanaustinhaha";
             string b = "nowanaustirhaha";
-            int inta = 0;
-            int intb = 10;
+            ulong ulonga = 0;
+            ulong ulongb = 10;
 
-            Assert.That(a.SwapChars(inta,intb), Is.EqualTo(b));
+            Assert.That(a.SwapChars(ulonga,ulongb), Is.EqualTo(b));
+        }
+
+        [Test]
+        public void UppercaseBecomesLowercase()
+        {
+            string input = "AbCdefGG";
+            string expt = "abcdefgg";
+            
+            Assert.That(Util.CleanWordInput(input), Is.EqualTo(expt));
+        }
+        
+        [Test]
+        public void NonAlphaCharactersRemoved()
+        {
+            string input = "Ab1C2de f;;=>G,G";
+            string expt = "abcdefgg";
+            
+            Assert.That(Util.CleanWordInput(input), Is.EqualTo(expt));
+        }
+
+        [Test]
+        public void ApostropheRemoved()
+        {
+            string input = "as'you'see";
+            string expt = "asyousee";
+            
+            Assert.That(Util.CleanWordInput(input), Is.EqualTo(expt));
         }
     }
 }

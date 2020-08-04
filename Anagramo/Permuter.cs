@@ -39,7 +39,7 @@ namespace Anagramo
             }
             else
             {
-                for (var i = 0; i < k; i++)
+                for (int i = 0; i < k; i++)
                 {
                     Generate(perm, k-1, result);
                     
